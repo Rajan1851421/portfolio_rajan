@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import logo from "../assets/image/logo.jpg";
 
 function App() {
   const [isDrawerOpen, setDrawerOpen] = useState(false);
   const [currentDateTime, setCurrentDateTime] = useState(new Date());
+  const location = useLocation(); // Get current path
 
   const toggleDrawer = () => setDrawerOpen(!isDrawerOpen);
   const closeDrawer = () => setDrawerOpen(false);
@@ -16,9 +17,12 @@ function App() {
     const intervalId = setInterval(() => {
       setCurrentDateTime(new Date());
     }, 1000);
-
     return () => clearInterval(intervalId);
   }, []);
+
+  // Active style utility
+  const isActive = (path) =>
+    location.pathname === path ? "text-black font-semibold underline" : "text-gray-900";
 
   return (
     <nav className="p-4 bg-[#c0c0c0] sticky top-0 z-50">
@@ -38,20 +42,28 @@ function App() {
           <span className="ml-8 text-sm md:text-base text-gray-800">
             {currentDateTime.toLocaleString()}
           </span>
-          <Link to='https://github.com/Rajan1851421' target='_blank' rel="noopener noreferrer"><i className="fab fa-github"></i></Link>
-          <Link className="text-blue-500" to='https://www.linkedin.com/in/rajan-prajapati-717337192/' target='_blank' rel="noopener noreferrer"><i class="fa-brands fa-linkedin"></i></Link>
-
+          <Link to="https://github.com/Rajan1851421" target="_blank" rel="noopener noreferrer">
+            <i className="fab fa-github"></i>
+          </Link>
+          <Link
+            to="https://www.linkedin.com/in/rajan-prajapati-717337192/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-500"
+          >
+            <i className="fa-brands fa-linkedin"></i>
+          </Link>
         </div>
 
         {/* Desktop Links */}
         <div className="hidden md:flex space-x-5">
-          <Link to="/" className="font-normal hover:text-white">Home</Link>
-          <Link to="/editor" className="font-normal hover:text-white">Editor</Link>
-          <Link to="/project" className="font-normal hover:text-white">Project</Link>
-          <Link to="/game" className="font-normal hover:text-white">Game</Link>
-          <Link to="/calculator" className="font-normal hover:text-white">Calculator</Link>         
-          <Link to="/shopping" className="font-normal hover:text-white">Shopping</Link>
-          <Link to="/register" className="font-normal hover:text-white relative">
+          <Link to="/" className={`${isActive("/")}`}>Home</Link>
+          <Link to="/editor" className={`${isActive("/editor")}`}>Editor</Link>
+          <Link to="/project" className={`${isActive("/project")}`}>Project</Link>
+          <Link to="/game" className={`${isActive("/game")}`}>Game</Link>
+          <Link to="/calculator" className={`${isActive("/calculator")}`}>Calculator</Link>
+          <Link to="/shopping" className={`${isActive("/shopping")}`}>Shopping</Link>
+          <Link to="/register" className={`relative ${isActive("/register")}`}>
             Register
             <span className="absolute top-0 right-0 inline-flex items-center py-0.5 px-1.5 rounded-full text-xs font-medium bg-red-500 text-white">
               {Allusers.length}
@@ -72,34 +84,45 @@ function App() {
         </button>
       </div>
 
-      {/* Mobile Drawer (with Backdrop) */}
+      {/* Mobile Backdrop */}
       <div
-        className={`fixed top-0 left-0 h-full w-full bg-black bg-opacity-50 z-50 ${
+        className={`fixed top-0 left-0 h-full w-full bg-black bg-opacity-50 z-40 ${
           isDrawerOpen ? "block" : "hidden"
         }`}
         onClick={closeDrawer}
       ></div>
 
+      {/* Mobile Drawer */}
       <div
         className={`fixed top-0 left-0 h-full w-64 bg-gray-800 text-white transform ${
           isDrawerOpen ? "translate-x-0" : "-translate-x-full"
-        } transition-transform duration-300 ease-in-out z-[100]`}
+        } transition-transform duration-300 ease-in-out z-50`}
       >
         <div className="p-4">
-          <button
-            className="text-right text-xl font-bold w-full mb-4"
-            onClick={closeDrawer}
-          >
+          <button className="text-right text-xl font-bold w-full mb-4" onClick={closeDrawer}>
             ✖
           </button>
 
-          <Link to="/" onClick={closeDrawer} className="block py-2 border-b">Home</Link>
-          <Link to="/editor" onClick={closeDrawer} className="block py-2 border-b">Editor</Link>
-          <Link to="/game" onClick={closeDrawer} className="block py-2 border-b">Game</Link>
-          <Link to="/calculator" onClick={closeDrawer} className="block py-2 border-b">Calculator</Link>
-          <Link to="/project" onClick={closeDrawer} className="block py-2 border-b">Project</Link>
-          <Link to="/shopping" onClick={closeDrawer} className="block py-2 border-b">Shopping</Link>
-          <Link to="/register" onClick={closeDrawer} className="block py-2 border-b">
+          {/* Mobile Links */}
+          <Link to="/" onClick={closeDrawer} className={`block py-2 border-b ${isActive("/")}`}>
+            Home
+          </Link>
+          <Link to="/editor" onClick={closeDrawer} className={`block py-2 border-b ${isActive("/editor")}`}>
+            Editor
+          </Link>
+          <Link to="/game" onClick={closeDrawer} className={`block py-2 border-b ${isActive("/game")}`}>
+            Game
+          </Link>
+          <Link to="/calculator" onClick={closeDrawer} className={`block py-2 border-b ${isActive("/calculator")}`}>
+            Calculator
+          </Link>
+          <Link to="/project" onClick={closeDrawer} className={`block py-2 border-b ${isActive("/project")}`}>
+            Project
+          </Link>
+          <Link to="/shopping" onClick={closeDrawer} className={`block py-2 border-b ${isActive("/shopping")}`}>
+            Shopping
+          </Link>
+          <Link to="/register" onClick={closeDrawer} className={`block py-2 border-b ${isActive("/register")}`}>
             Register ({Allusers.length})
           </Link>
         </div>

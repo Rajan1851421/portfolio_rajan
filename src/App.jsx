@@ -4,6 +4,7 @@ import Footer from './components/Footer';
 import Header from './components/Header';
 import Router from './components/Router';
 import Confetti from 'react-confetti';
+import Whatsapp from './components/Whatsapp';
 
 function App() {
   const [showConfetti, setShowConfetti] = useState(true);
@@ -23,6 +24,7 @@ function App() {
           />
         )}
         <Header />
+        <Whatsapp/>
         <Router />
         <Footer />
       </div>

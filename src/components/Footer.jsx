@@ -47,10 +47,10 @@ function Footer() {
                                         </li>
                                         <li>
                                             <Link
-                                                to="https://uttamtravels.netlify.app/"
+                                                to="https://shrikashitravels.com"
                                                 className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
                                                 target="_blank"
-                                                rel="noopener noreferrer">Uttam Travels <span className='text-red-600'>(Under Construction)</span>
+                                                rel="noopener noreferrer">Uttam Travels
                                             </Link>
                                         </li>
                                         <li>
@@ -85,11 +85,11 @@ function Footer() {
                                         <li>
                                             <Link
                                                 className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                                                to="https://cricktick.netlify.app/"
+                                                to="https://swiftlymeds.com"
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                             >
-                                                CrickTick
+                                                Swiftlymeds Pvt.Ltd
                                             </Link>
                                         </li>
                                         <li>

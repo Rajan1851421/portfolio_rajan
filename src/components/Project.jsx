@@ -8,9 +8,9 @@ import book from '../assets/image/book.png'
 import gyandeep from '../assets/image/gyandeep.png'
 
 function Project() {
-    window.scrollTo(0,0)
+    window.scrollTo(0, 0)
     const projects = [
-        { img: uttam, link: "https://uttamtravels.netlify.app/", title: "Uttam Travels" },
+        { img: uttam, link: "https://shrikashitravels.com", title: "Shrikashi Travels" },
         { img: youtube, link: "https://rajantube.netlify.app/", title: "Rajan Tube" },
         { img: enote, link: "https://eenote.netlify.app/", title: "E-Note" },
         { img: watch, link: "https://graceful-pastelito-01b3d7.netlify.app/", title: "Watch Project" },

@@ -27,7 +27,7 @@ function Expirence() {
                    
                     <ul className='list-disc font-bold text-gray-800 mx-2'>
                         <li>
-                            <Link to='https://uttamtravels.netlify.app/' target='_blank' rel='no' >Booking Cab application and manage Admin pannel. &nbsp; <span className='text-blue-800'>https://uttamtravels.netlify.app</span> </Link>
+                            <Link to='https://shrikashitravels.com' target='_blank' rel='no' >Booking Cab application and manage Admin pannel. &nbsp; <span className='text-blue-800'>https://shrikashitravels.com</span> </Link>
                         </li>
                     </ul>
                     <ul className='list-disc font-bold text-gray-800 mx-2 no-select'>
